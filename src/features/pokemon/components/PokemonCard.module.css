@@ -1,0 +1,63 @@
+.card {
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #020617, #111827);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.linkArea {
+  text-decoration: none;
+  color: inherit;
+}
+
+.image {
+  padding: 16px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.body {
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.name {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  color: white;
+}
+
+.badge {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.footer {
+  background: transparent;
+  border-top: none;
+  padding: 10px 12px 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  width: 100%;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}

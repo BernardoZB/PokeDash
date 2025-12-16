@@ -1,0 +1,89 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  text-transform: capitalize;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Ícone */
+.icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Tipos */
+.fire {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+.water {
+  background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+}
+
+.grass {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.electric {
+  background: linear-gradient(135deg, #fde047, #facc15);
+  color: #1f2937;
+}
+
+.ice {
+  background: linear-gradient(135deg, #67e8f9, #22d3ee);
+  color: #1f2937;
+}
+
+.fighting {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+.poison {
+  background: linear-gradient(135deg, #a855f7, #7e22ce);
+}
+
+.ground {
+  background: linear-gradient(135deg, #d97706, #92400e);
+}
+
+.flying {
+  background: linear-gradient(135deg, #60a5fa, #a5b4fc);
+}
+
+.psychic {
+  background: linear-gradient(135deg, #ec4899, #db2777);
+}
+
+.bug {
+  background: linear-gradient(135deg, #84cc16, #65a30d);
+}
+
+.rock {
+  background: linear-gradient(135deg, #a8a29e, #78716c);
+}
+
+.ghost {
+  background: linear-gradient(135deg, #6366f1, #4338ca);
+}
+
+.dragon {
+  background: linear-gradient(135deg, #7c3aed, #4c1d95);
+}
+
+.dark {
+  background: linear-gradient(135deg, #111827, #374151);
+}
+
+.steel {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+.fairy {
+  background: linear-gradient(135deg, #f9a8d4, #f472b6);
+}

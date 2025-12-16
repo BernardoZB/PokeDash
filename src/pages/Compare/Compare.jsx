@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { usePokemon } from "../../features/pokemon/hooks/usePokemon";
-import Loader from "../../shared/components/Loader";
-import styles from "./styles.module.css";
+import { useState } from 'react';
+import { usePokemon } from '../../features/pokemon/hooks/usePokemon';
+import Loader from '../../shared/components/Loader';
+import styles from './styles.module.css';
 
 export default function Compare() {
-  const [first, setFirst] = useState("");
-  const [second, setSecond] = useState("");
+  const [first, setFirst] = useState('');
+  const [second, setSecond] = useState('');
 
   const pokemon1 = usePokemon(first);
   const pokemon2 = usePokemon(second);
@@ -18,12 +18,12 @@ export default function Compare() {
         <input
           placeholder="Primeiro Pokémon"
           value={first}
-          onChange={(e) => setFirst(e.target.value.toLowerCase())}
+          onChange={e => setFirst(e.target.value.toLowerCase())}
         />
         <input
           placeholder="Segundo Pokémon"
           value={second}
-          onChange={(e) => setSecond(e.target.value.toLowerCase())}
+          onChange={e => setSecond(e.target.value.toLowerCase())}
         />
       </div>
 
@@ -35,12 +35,9 @@ export default function Compare() {
           return (
             <div key={index} className={styles.card}>
               <h2>{poke.data.name}</h2>
-              <img
-                src={poke.data.sprites.front_default}
-                alt={poke.data.name}
-              />
+              <img src={poke.data.sprites.front_default} alt={poke.data.name} />
               <ul>
-                {poke.data.stats.map((stat) => (
+                {poke.data.stats.map(stat => (
                   <li key={stat.stat.name}>
                     {stat.stat.name}: {stat.base_stat}
                   </li>

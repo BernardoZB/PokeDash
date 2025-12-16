@@ -1,9 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
-import Home from "../pages/Home/Home";
-import PokemonDetails from "../pages/PokemonDetails/PokemonDetails";
-import Compare from "../pages/Compare/Compare";
-import TeamBuilder from "../pages/TeamBuilder/TeamBuilder";
+import Home from '../pages/Home/Home';
+import PokemonDetails from '../pages/PokemonDetails/PokemonDetails';
+import Compare from '../pages/Compare/Compare';
+import TeamBuilder from '../pages/TeamBuilder/TeamBuilder';
 
 export default function AppRoutes() {
   return (

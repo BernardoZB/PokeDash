@@ -1,4 +1,3 @@
-
 # 🧠 Pokémon Strategy Lab
 
 Aplicação front-end desenvolvida em **ReactJS** utilizando a **PokeAPI**, com foco em **análise estratégica de Pokémon**, indo além de uma Pokédex tradicional.
@@ -17,11 +16,11 @@ O projeto foi pensado para demonstrar **arquitetura escalável**, **boas prátic
 
 Criar uma aplicação front-end completa para portfólio que:
 
-* Consuma APIs externas
-* Possua arquitetura organizada e escalável
-* Demonstre domínio de React moderno
-* Traga funcionalidades fora do padrão básico
-* Seja fácil de evoluir com testes e documentação
+- Consuma APIs externas
+- Possua arquitetura organizada e escalável
+- Demonstre domínio de React moderno
+- Traga funcionalidades fora do padrão básico
+- Seja fácil de evoluir com testes e documentação
 
 ---
 
@@ -29,31 +28,31 @@ Criar uma aplicação front-end completa para portfólio que:
 
 ### 🔍 Explorer de Pokémon
 
-* Listagem de Pokémon
-* Busca por nome
-* Navegação para página de detalhes
+- Listagem de Pokémon
+- Busca por nome
+- Navegação para página de detalhes
 
 ### 📊 Página de Detalhes
 
-* Informações completas do Pokémon
-* Visualização de stats
-* Tipos e combinações
-* Estrutura pronta para cálculo de fraquezas e resistências
+- Informações completas do Pokémon
+- Visualização de stats
+- Tipos e combinações
+- Estrutura pronta para cálculo de fraquezas e resistências
 
 ### ⚔️ Comparador
 
-* Comparação de Pokémon lado a lado
-* Destaque de diferenças de stats e tipos
+- Comparação de Pokémon lado a lado
+- Destaque de diferenças de stats e tipos
 
 ### 🧠 Team Builder
 
-* Montagem de time com até 6 Pokémon
-* Persistência no `localStorage`
-* Estrutura pronta para análise de cobertura de tipos
+- Montagem de time com até 6 Pokémon
+- Persistência no `localStorage`
+- Estrutura pronta para análise de cobertura de tipos
 
 ### ⭐ Favoritos
 
-* Salvar Pokémon favoritos localmente
+- Salvar Pokémon favoritos localmente
 
 ---
 
@@ -73,10 +72,10 @@ src/
 
 ### Por quê essa arquitetura?
 
-* Facilita manutenção
-* Escala bem com o crescimento do projeto
-* Reflete padrões usados em projetos reais
-* Evita componentes e lógica acoplados
+- Facilita manutenção
+- Escala bem com o crescimento do projeto
+- Reflete padrões usados em projetos reais
+- Evita componentes e lógica acoplados
 
 ---
 
@@ -84,28 +83,28 @@ src/
 
 ### Core
 
-* **ReactJS**
-* **Vite**
-* **React Router DOM**
+- **ReactJS**
+- **Vite**
+- **React Router DOM**
 
 ### Dados e API
 
-* **Axios**
-* **@tanstack/react-query**
+- **Axios**
+- **@tanstack/react-query**
 
 ### UI / UX
 
-* **CSS Modules**
-* **Framer Motion**
-* **Chart.js**
-* **react-chartjs-2**
-* **clsx**
+- **CSS Modules**
+- **Framer Motion**
+- **Chart.js**
+- **react-chartjs-2**
+- **clsx**
 
 ### Testes (planejado)
 
-* **Vitest**
-* **Testing Library**
-* **jsdom**
+- **Vitest**
+- **Testing Library**
+- **jsdom**
 
 ---
 
@@ -129,19 +128,19 @@ npm run dev
 
 ## 🌐 API Utilizada
 
-* [PokeAPI](https://pokeapi.co/)
-* API pública e gratuita
-* Nenhuma autenticação necessária
+- [PokeAPI](https://pokeapi.co/)
+- API pública e gratuita
+- Nenhuma autenticação necessária
 
 ---
 
 ## 🧠 Decisões Técnicas
 
-* **React Query** para cache e gerenciamento de estados assíncronos
-* **Separação de responsabilidades** entre UI, lógica e serviços
-* **Hooks customizados** para encapsular regras de negócio
-* **Context API** para estado global (Team Builder)
-* **Persistência local** via `localStorage`
+- **React Query** para cache e gerenciamento de estados assíncronos
+- **Separação de responsabilidades** entre UI, lógica e serviços
+- **Hooks customizados** para encapsular regras de negócio
+- **Context API** para estado global (Team Builder)
+- **Persistência local** via `localStorage`
 
 ---
 
@@ -149,14 +148,14 @@ npm run dev
 
 Os testes serão implementados futuramente com foco em:
 
-* Hooks customizados
-* Componentes reutilizáveis
-* Estados de loading e erro
+- Hooks customizados
+- Componentes reutilizáveis
+- Estados de loading e erro
 
 Bibliotecas:
 
-* Vitest
-* Testing Library
+- Vitest
+- Testing Library
 
 ---
 
@@ -164,22 +163,22 @@ Bibliotecas:
 
 Planejado:
 
-* Documentação de componentes reutilizáveis
-* Padrões de uso
-* Props e exemplos
-* Possível integração com Storybook
+- Documentação de componentes reutilizáveis
+- Padrões de uso
+- Props e exemplos
+- Possível integração com Storybook
 
 ---
 
 ## 🚧 Melhorias Futuras
 
-* Cálculo completo de fraquezas e resistências
-* Análise automática de cobertura de tipos do time
-* Dark / Light mode
-* Acessibilidade (ARIA)
-* Lazy loading de rotas
-* Testes automatizados
-* Documentação visual de componentes
+- Cálculo completo de fraquezas e resistências
+- Análise automática de cobertura de tipos do time
+- Dark / Light mode
+- Acessibilidade (ARIA)
+- Lazy loading de rotas
+- Testes automatizados
+- Documentação visual de componentes
 
 ---
 

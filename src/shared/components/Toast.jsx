@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import styles from "./Toast.module.css";
+import { motion, AnimatePresence } from 'framer-motion';
+import styles from './Toast.module.css';
 
 export default function Toast({ message, open }) {
   return (

@@ -1,5 +1,5 @@
-import { useTeam } from "../../features/team/TeamContext";
-import styles from "./styles.module.css";
+import { useTeam } from '../../features/team/TeamContext';
+import styles from './styles.module.css';
 
 export default function TeamBuilder() {
   const { team, removePokemon } = useTeam();
@@ -11,16 +11,11 @@ export default function TeamBuilder() {
       {team.length === 0 && <p>Nenhum Pokémon no time.</p>}
 
       <div className={styles.team}>
-        {team.map((pokemon) => (
+        {team.map(pokemon => (
           <div key={pokemon.name} className={styles.card}>
-            <img
-              src={pokemon.sprites.front_default}
-              alt={pokemon.name}
-            />
+            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             <h3>{pokemon.name}</h3>
-            <button onClick={() => removePokemon(pokemon.name)}>
-              Remover
-            </button>
+            <button onClick={() => removePokemon(pokemon.name)}>Remover</button>
           </div>
         ))}
       </div>
