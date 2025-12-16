@@ -1,70 +1,200 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🧠 Pokémon Strategy Lab
 
-## Available Scripts
+Aplicação front-end desenvolvida em **ReactJS** utilizando a **PokeAPI**, com foco em **análise estratégica de Pokémon**, indo além de uma Pokédex tradicional.
 
-In the project directory, you can run:
+O projeto foi pensado para demonstrar **arquitetura escalável**, **boas práticas de React**, **organização por domínio** e **processamento de dados da API**.
 
-### `npm start`
+<!-- ---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Demo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🔗 *(adicione aqui o link do deploy quando estiver pronto)*
 
-### `npm test`
+--- -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🎯 Objetivo do Projeto
 
-### `npm run build`
+Criar uma aplicação front-end completa para portfólio que:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Consuma APIs externas
+* Possua arquitetura organizada e escalável
+* Demonstre domínio de React moderno
+* Traga funcionalidades fora do padrão básico
+* Seja fácil de evoluir com testes e documentação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧩 Funcionalidades
 
-### `npm run eject`
+### 🔍 Explorer de Pokémon
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Listagem de Pokémon
+* Busca por nome
+* Navegação para página de detalhes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 📊 Página de Detalhes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Informações completas do Pokémon
+* Visualização de stats
+* Tipos e combinações
+* Estrutura pronta para cálculo de fraquezas e resistências
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### ⚔️ Comparador
 
-## Learn More
+* Comparação de Pokémon lado a lado
+* Destaque de diferenças de stats e tipos
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 🧠 Team Builder
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Montagem de time com até 6 Pokémon
+* Persistência no `localStorage`
+* Estrutura pronta para análise de cobertura de tipos
 
-### Code Splitting
+### ⭐ Favoritos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Salvar Pokémon favoritos localmente
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🏗️ Arquitetura do Projeto
 
-### Making a Progressive Web App
+O projeto segue uma **arquitetura baseada em domínio (feature-based)**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```txt
+src/
+├── app/        # Configurações globais
+├── pages/      # Páginas (rotas)
+├── features/   # Domínios da aplicação
+├── shared/     # Código reutilizável
+├── services/   # Serviços externos (API)
+├── utils/      # Funções utilitárias
+```
 
-### Advanced Configuration
+### Por quê essa arquitetura?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* Facilita manutenção
+* Escala bem com o crescimento do projeto
+* Reflete padrões usados em projetos reais
+* Evita componentes e lógica acoplados
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🛠️ Tecnologias e Bibliotecas
 
-### `npm run build` fails to minify
+### Core
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **ReactJS**
+* **Vite**
+* **React Router DOM**
+
+### Dados e API
+
+* **Axios**
+* **@tanstack/react-query**
+
+### UI / UX
+
+* **CSS Modules**
+* **Framer Motion**
+* **Chart.js**
+* **react-chartjs-2**
+* **clsx**
+
+### Testes (planejado)
+
+* **Vitest**
+* **Testing Library**
+* **jsdom**
+
+---
+
+## 📦 Instalação
+
+```bash
+# clone o repositório
+git clone https://github.com/BernardoZB/PokeDash
+
+# acesse a pasta
+cd pokemon-strategy-lab
+
+# instale as dependências
+npm install
+
+# rode o projeto
+npm run dev
+```
+
+---
+
+## 🌐 API Utilizada
+
+* [PokeAPI](https://pokeapi.co/)
+* API pública e gratuita
+* Nenhuma autenticação necessária
+
+---
+
+## 🧠 Decisões Técnicas
+
+* **React Query** para cache e gerenciamento de estados assíncronos
+* **Separação de responsabilidades** entre UI, lógica e serviços
+* **Hooks customizados** para encapsular regras de negócio
+* **Context API** para estado global (Team Builder)
+* **Persistência local** via `localStorage`
+
+---
+
+## 🧪 Testes (Roadmap)
+
+Os testes serão implementados futuramente com foco em:
+
+* Hooks customizados
+* Componentes reutilizáveis
+* Estados de loading e erro
+
+Bibliotecas:
+
+* Vitest
+* Testing Library
+
+---
+
+## 📚 Documentação de Componentes (Roadmap)
+
+Planejado:
+
+* Documentação de componentes reutilizáveis
+* Padrões de uso
+* Props e exemplos
+* Possível integração com Storybook
+
+---
+
+## 🚧 Melhorias Futuras
+
+* Cálculo completo de fraquezas e resistências
+* Análise automática de cobertura de tipos do time
+* Dark / Light mode
+* Acessibilidade (ARIA)
+* Lazy loading de rotas
+* Testes automatizados
+* Documentação visual de componentes
+
+---
+
+## 👨‍💻 Autor
+
+**Bernardo Brandão**
+Front-end Developer | React
+
+<!-- 🔗 LinkedIn: *(adicione aqui)*
+🔗 Portfólio: *(adicione aqui)* -->
+
+---
+
+## 📄 Licença
+
+Este projeto é apenas para fins educacionais e de portfólio.
+
+---

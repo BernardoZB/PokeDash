@@ -1,0 +1,17 @@
+import { Routes, Route } from "react-router-dom";
+
+import Home from "../pages/Home/Home";
+import PokemonDetails from "../pages/PokemonDetails/PokemonDetails";
+import Compare from "../pages/Compare/Compare";
+import TeamBuilder from "../pages/TeamBuilder/TeamBuilder";
+
+export default function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/pokemon/:name" element={<PokemonDetails />} />
+      <Route path="/compare" element={<Compare />} />
+      <Route path="/team" element={<TeamBuilder />} />
+    </Routes>
+  );
+}
