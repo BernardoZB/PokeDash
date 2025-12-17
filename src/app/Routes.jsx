@@ -9,7 +9,7 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/pokemon/:name" element={<PokemonDetails />} />
+      <Route path="/pokemon/:id" element={<PokemonDetails />} />
       <Route path="/compare" element={<Compare />} />
       <Route path="/team" element={<TeamBuilder />} />
     </Routes>

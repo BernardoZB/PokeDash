@@ -10,13 +10,13 @@ import {
   Badge,
 } from 'react-bootstrap';
 
-import { usePokemonList } from '../../features/pokemon/hooks/usePokemonList';
+import { usePokemonNameList } from '../../features/pokemon/hooks/usePokemonList';
 import PokemonCard from '../../features/pokemon/components/PokemonCard';
 import Loader from '../../shared/components/Loader';
 import styles from './styles.module.css';
 
 export default function Home() {
-  const { data, isLoading, error } = usePokemonList();
+  const { data, isLoading, error } = usePokemonNameList();
   const [query, setQuery] = useState('');
 
   const list = data || [];

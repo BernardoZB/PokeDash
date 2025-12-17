@@ -1,42 +1,210 @@
-import { useParams } from 'react-router-dom';
-import { usePokemon } from '../../features/pokemon/hooks/usePokemon';
+import { useParams, Link } from 'react-router-dom';
+import { Card, Badge, ProgressBar } from 'react-bootstrap';
+import { usePokemonId } from '../../features/pokemon/hooks/usePokemon';
 import TypeBadge from '../../features/pokemon/components/TypeBadge';
 import Loader from '../../shared/components/Loader';
+import EvolutionTree from '../../features/pokemon/components/EvolutionTree';
 import styles from './styles.module.css';
+import { usePokemonMatchups } from '../../features/pokemon/hooks/usePokemonMatchups';
+import { Button } from 'react-bootstrap';
+import { useRef, useState } from 'react';
+import { useTeam } from '../../features/team/TeamContext';
 
 export default function PokemonDetails() {
-  const { name } = useParams();
-  const { data, isLoading, error } = usePokemon(name);
+  const { id } = useParams();
+  const { data, isLoading, error } = usePokemonId(id);
+  const {
+    data: dataNext,
+    isLoading: isLoadingNext,
+    error: errorNext,
+  } = usePokemonId(parseInt(id) + 1);
+  const {
+    data: dataPrev,
+    isLoading: isLoadingPrev,
+    error: errorPrev,
+  } = usePokemonId(parseInt(id) - 1);
 
-  if (isLoading) return <Loader />;
-  if (error) return <p>Erro ao carregar Pokémon</p>;
+  const {
+    weaknesses,
+    strengths,
+    loading: loadingMatchups,
+  } = usePokemonMatchups(data?.types || []);
+  const { team, addPokemon, removePokemon } = useTeam();
+  const audioRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
 
+  const isInTeam = team.some(p => p.id === data?.id);
+  const teamFull = team.length >= 6;
+
+  const cryUrl = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`;
+
+  const toggleCry = () => {
+    if (!audioRef.current) return;
+
+    if (playing) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+
+    setPlaying(!playing);
+  };
+
+  const handleTeamAction = () => {
+    if (isInTeam) {
+      removePokemon(data.name);
+    } else {
+      if (teamFull) return;
+      addPokemon({
+        id: data.id,
+        name: data.name,
+        sprites: data.sprites,
+        types: data.types,
+      });
+    }
+  };
+
+  if (isLoading || isLoadingNext || isLoadingPrev) return <Loader />;
+  if (error || errorNext || errorPrev) return <p>Erro ao carregar Pokémon</p>;
   return (
     <main className={styles.container}>
-      <header className={styles.header}>
-        <img src={data.sprites.front_default} alt={data.name} />
-        <h1 className="pokeName">{data.name}</h1>
-      </header>
+      {/* NAV TOPO */}
+      <nav className={styles.topNav}>
+        {id > 1 ? (
+          <Link to={`/pokemon/${dataPrev.id}`} className={styles.navItem}>
+            <span className={styles.arrow}>⬅</span>
+            <div>
+              <small>Anterior </small>
+              <strong className="pokeName">
+                {dataPrev.name.charAt(0).toUpperCase() + dataPrev.name.slice(1)}
+              </strong>
+            </div>
+          </Link>
+        ) : (
+          <div />
+        )}
 
-      <section>
-        <h2>Tipos</h2>
-        <div className={styles.types}>
-          {data.types.map(t => (
-            <TypeBadge key={t.type.name} type={t.type.name} />
-          ))}
-        </div>
-      </section>
+        <Badge bg="secondary" className={styles.idBadge}>
+          #{id}
+        </Badge>
 
-      <section>
-        <h2>Status Base</h2>
-        <ul className={styles.stats}>
-          {data.stats.map(stat => (
-            <li key={stat.stat.name}>
-              {stat.stat.name}: {stat.base_stat}
-            </li>
-          ))}
-        </ul>
-      </section>
+        <Link to={`/pokemon/${dataNext.id}`} className={styles.navItem}>
+          <div className={styles.alignRight}>
+            <small>Próximo </small>
+            <strong className="pokeName">
+              {dataNext.name.charAt(0).toUpperCase() + dataNext.name.slice(1)}
+            </strong>
+          </div>
+          <span className={styles.arrow}>➡</span>
+        </Link>
+      </nav>
+
+      <Card className={styles.headerCard}>
+        <Card.Body className={styles.header}>
+          <img
+            src={data.sprites.other['official-artwork'].front_default}
+            alt={data.name}
+          />
+
+          <div className={styles.info}>
+            <h1 className={styles.name}>{data.name}</h1>
+
+            <div className={styles.types}>
+              {data.types.map(t => (
+                <TypeBadge key={t.type.name} type={t.type.name} />
+              ))}
+            </div>
+
+            {/* AÇÕES */}
+            <div className={styles.actions}>
+              {/* CRY */}
+              <Button variant="outline-secondary" size="sm" onClick={toggleCry}>
+                {playing ? '🔊 Pausar choro' : '🔈 Ouvir choro'}
+              </Button>
+
+              <audio
+                ref={audioRef}
+                src={cryUrl}
+                onEnded={() => setPlaying(false)}
+              />
+
+              {/* TEAM */}
+              <Button
+                size="sm"
+                variant={isInTeam ? 'danger' : 'primary'}
+                disabled={!isInTeam && teamFull}
+                onClick={handleTeamAction}
+              >
+                {isInTeam
+                  ? 'Remover do time'
+                  : teamFull
+                    ? 'Time cheio'
+                    : 'Adicionar ao time'}
+              </Button>
+            </div>
+
+            {/* MATCHUPS */}
+            {!loadingMatchups && (
+              <div className={styles.matchups}>
+                <div>
+                  <strong>Fraquezas</strong>
+                  <div className={styles.badgeRow}>
+                    {weaknesses.length === 0 ? (
+                      <span className={styles.neutral}>Nenhuma</span>
+                    ) : (
+                      weaknesses.map(w => (
+                        <TypeBadge
+                          key={w.type}
+                          type={w.type}
+                          multiplier={w.mult}
+                        />
+                      ))
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <strong>Forças</strong>
+                  <div className={styles.badgeRow}>
+                    {strengths.map(type => (
+                      <TypeBadge key={type} type={type} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </Card.Body>
+      </Card>
+
+      {/* STATS */}
+      <Card className={styles.headerCard}>
+        <Card.Body>
+          <h3>Status Base</h3>
+
+          <ul className={styles.stats}>
+            {data.stats.map(stat => (
+              <li key={stat.stat.name}>
+                <span>{stat.stat.name}</span>
+
+                <ProgressBar
+                  now={stat.base_stat}
+                  max={150}
+                  label={stat.base_stat}
+                />
+              </li>
+            ))}
+          </ul>
+        </Card.Body>
+      </Card>
+
+      {/* EVOLUTION */}
+      <Card className={styles.headerCard}>
+        <Card.Body>
+          <h3>Árvore de Evolução</h3>
+          <EvolutionTree speciesUrl={data.species.url} />
+        </Card.Body>
+      </Card>
     </main>
   );
 }

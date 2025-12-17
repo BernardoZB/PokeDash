@@ -44,7 +44,7 @@ export default function PokemonCard({ pokemon }) {
   return (
     <>
       <Card className={styles.card}>
-        <Link to={`/pokemon/${pokemon.name}`} className={styles.linkArea}>
+        <Link to={`/pokemon/${pokemon.id}`} className={styles.linkArea}>
           <Card.Img
             variant="top"
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}

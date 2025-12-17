@@ -1,3 +1,151 @@
 .container {
-  padding: 12px;
+  padding: 32px 16px;
+  margin: 0 auto;
+  background: radial-gradient(circle at top, #1f2937, #020617);
+}
+
+.headerCard {
+  background: linear-gradient(135deg, #020617, #111827);
+  color: white;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #252525;
+}
+
+.header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.header img {
+  width: 180px;
+}
+
+.name {
+  text-transform: capitalize;
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.types {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav a {
+  color: #93c5fd;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.section {
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  list-style: none;
+  padding: 0;
+}
+
+.stats li {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+/* NAV TOPO */
+.topNav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-bottom: 16px;
+  justify-items: center;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #c7d2fe;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navItem small {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+
+.navItem strong {
+  text-transform: capitalize;
+}
+
+.navItem:hover {
+  color: #93c5fd;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.arrow {
+  font-size: 1.4rem;
+}
+
+.idBadge {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+}
+.card {
+  background: linear-gradient(135deg, #020617, #111827);
+  color: white;
+}
+
+/* HEADER permanece igual */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.matchups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.matchups strong {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.badgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.neutral {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+  flex-wrap: wrap;
 }

@@ -9,3 +9,7 @@ export const getPokemonByName = async name => {
   const { data } = await api.get(`/pokemon/${name}`);
   return data;
 };
+export const getPokemonById = async id => {
+  const { data } = await api.get(`/pokemon/${id}`);
+  return data;
+};

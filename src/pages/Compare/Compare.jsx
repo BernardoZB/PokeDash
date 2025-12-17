@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePokemon } from '../../features/pokemon/hooks/usePokemon';
+import { usePokemonName } from '../../features/pokemon/hooks/usePokemon';
 import Loader from '../../shared/components/Loader';
 import styles from './styles.module.css';
 
@@ -7,8 +7,8 @@ export default function Compare() {
   const [first, setFirst] = useState('');
   const [second, setSecond] = useState('');
 
-  const pokemon1 = usePokemon(first);
-  const pokemon2 = usePokemon(second);
+  const pokemon1 = usePokemonName(first);
+  const pokemon2 = usePokemonName(second);
 
   return (
     <main className={styles.container}>
