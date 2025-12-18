@@ -1,4 +1,3 @@
-
 ---
 
 # 🧠 PokeDash — Pokémon Team Builder
@@ -23,9 +22,9 @@ Unlike a simple Pokédex, **PokeDash simulates a real strategic tool** similar t
 
 It answers questions like:
 
-* *Is my team weak to Electric or Ice?*
-* *Do my Pokémon cover each other defensively?*
-* *Is my team too slow or too fragile?*
+- _Is my team weak to Electric or Ice?_
+- _Do my Pokémon cover each other defensively?_
+- _Is my team too slow or too fragile?_
 
 All analysis is done **client-side**, using data from the PokeAPI.
 
@@ -35,51 +34,51 @@ All analysis is done **client-side**, using data from the PokeAPI.
 
 ### 🧩 Pokémon Exploration
 
-* Pokémon listing with cards
-* Clean navigation using React Router
-* Reusable UI components
+- Pokémon listing with cards
+- Clean navigation using React Router
+- Reusable UI components
 
 ### 📄 Pokémon Details Page
 
-* Official artwork
-* Type badges with custom styling
-* Base stats with progress bars
-* **Defensive strengths & weaknesses**
-* Evolution tree with conditions
-* Pokémon cry playback 🎵
-* Add/remove Pokémon from the team
-* Navigation to previous / next Pokémon
+- Official artwork
+- Type badges with custom styling
+- Base stats with progress bars
+- **Defensive strengths & weaknesses**
+- Evolution tree with conditions
+- Pokémon cry playback 🎵
+- Add/remove Pokémon from the team
+- Navigation to previous / next Pokémon
 
 ### 🧠 Team System (Core Feature)
 
-* Team limited to 6 Pokémon
-* Global state with Context API
-* Persistent storage using `localStorage`
-* Add/remove actions with visual feedback (toast)
+- Team limited to 6 Pokémon
+- Global state with Context API
+- Persistent storage using `localStorage`
+- Add/remove actions with visual feedback (toast)
 
 ### 🧠 Floating Team Widget
 
-* Animated floating action button
-* Real-time team counter
-* Pokémon list with:
+- Animated floating action button
+- Real-time team counter
+- Pokémon list with:
+  - Sprite
+  - Name
+  - **Type icons (fetched dynamically)**
 
-  * Sprite
-  * Name
-  * **Type icons (fetched dynamically)**
-* Click Pokémon → details page
-* Displays team-wide weaknesses
-* Shortcut to Team Builder
+- Click Pokémon → details page
+- Displays team-wide weaknesses
+- Shortcut to Team Builder
 
 ### 📊 Team Builder (Advanced Analysis)
 
-* Fetches **full Pokémon data** for the team
-* Displays:
+- Fetches **full Pokémon data** for the team
+- Displays:
+  - Individual Pokémon cards
+  - Types and base stats
+  - Average team stats
+  - Aggregated defensive weaknesses
 
-  * Individual Pokémon cards
-  * Types and base stats
-  * Average team stats
-  * Aggregated defensive weaknesses
-* Designed for **decision-making**, not just visuals
+- Designed for **decision-making**, not just visuals
 
 ---
 
@@ -87,22 +86,22 @@ All analysis is done **client-side**, using data from the PokeAPI.
 
 ### Core
 
-* **React 18**
-* **React Router DOM**
-* **@tanstack/react-query**
-* **Context API**
+- **React 18**
+- **React Router DOM**
+- **@tanstack/react-query**
+- **Context API**
 
 ### UI / UX
 
-* **React Bootstrap**
-* **CSS Modules**
-* **Framer Motion**
-* Custom Toast system
+- **React Bootstrap**
+- **CSS Modules**
+- **Framer Motion**
+- Custom Toast system
 
 ### APIs
 
-* **PokeAPI**
-* Pokémon official cries repository (`.ogg` audio)
+- **PokeAPI**
+- Pokémon official cries repository (`.ogg` audio)
 
 ---
 
@@ -124,10 +123,10 @@ src/
 
 ### Why this matters:
 
-* Clear separation of concerns
-* Easy scalability
-* Predictable data flow
-* Readable and maintainable codebase
+- Clear separation of concerns
+- Easy scalability
+- Predictable data flow
+- Readable and maintainable codebase
 
 ---
 
@@ -135,31 +134,31 @@ src/
 
 ### Team State
 
-* Stored globally via Context API
-* Automatically persisted in `localStorage`
-* Restored on page reload
+- Stored globally via Context API
+- Automatically persisted in `localStorage`
+- Restored on page reload
 
 ### Data Fetching
 
-* Pokémon data fetched on demand
-* Cached using React Query
-* Avoids unnecessary re-fetching
+- Pokémon data fetched on demand
+- Cached using React Query
+- Avoids unnecessary re-fetching
 
 ### Type Analysis Logic
 
-* Defensive multipliers are calculated per Pokémon
-* Dual types are combined (e.g. Fire + Flying)
-* Team weaknesses are aggregated and counted
+- Defensive multipliers are calculated per Pokémon
+- Dual types are combined (e.g. Fire + Flying)
+- Team weaknesses are aggregated and counted
 
 ---
 
 ## 🎨 UX & Visual Design
 
-* Dark theme with radial gradients
-* Consistent design language across pages
-* Type-specific color system
-* Smooth animations (hover, open, feedback)
-* Compact, information-dense layouts
+- Dark theme with radial gradients
+- Consistent design language across pages
+- Type-specific color system
+- Smooth animations (hover, open, feedback)
+- Compact, information-dense layouts
 
 The UI prioritizes **readability and decision-making**, not just aesthetics.
 
@@ -194,11 +193,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ## 🔮 Possible Improvements
 
-* Team suggestions based on weaknesses
-* Export team (image / JSON)
-* Competitive modes (Singles / Doubles)
-* Unit tests (React Testing Library)
-* Accessibility improvements (ARIA)
+- Team suggestions based on weaknesses
+- Export team (image / JSON)
+- Competitive modes (Singles / Doubles)
+- Unit tests (React Testing Library)
+- Accessibility improvements (ARIA)
 
 ---
 

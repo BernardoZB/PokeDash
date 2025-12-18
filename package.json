@@ -34,7 +34,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://BernardoZB.github.io/pokelab",
+  "homepage": "https://BernardoZB.github.io/pokedash",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -39,7 +39,7 @@ export default function Home() {
             <Card.Body className="d-flex flex-column gap-3">
               <div>
                 <h1 id="home-title" className={styles.title}>
-                  PokeLab
+                  PokeDash
                 </h1>
               </div>
 
