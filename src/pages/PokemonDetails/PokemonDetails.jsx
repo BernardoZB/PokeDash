@@ -32,7 +32,7 @@ export default function PokemonDetails() {
   const { team, addPokemon, removePokemon } = useTeam();
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
+  const [, setClickCount] = useState(0);
   const [isShiny, setIsShiny] = useState(false);
   const shinyAudioRef = useRef(null);
 

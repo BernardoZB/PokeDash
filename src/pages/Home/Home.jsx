@@ -19,7 +19,7 @@ export default function Home() {
   const { data, isLoading, error } = usePokemonNameList();
   const [query, setQuery] = useState('');
 
-  const list = data || [];
+  const list = useMemo(() => data ?? [], [data]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
