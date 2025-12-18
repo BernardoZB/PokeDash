@@ -1,18 +1,14 @@
----
-
-# 🧠 PokeDash — Pokémon Team Builder
-
-> **Front-end React application focused on UX, state management and strategic data analysis using public APIs.**
+## 🧠 PokeDash
 
 PokeDash is a **modern React application** that allows users to explore Pokémon, build a team of up to 6 members, and analyze **defensive weaknesses, strengths and average stats** — all with a clean UI, smooth animations and no backend.
 
 This project was designed as a **portfolio case**, demonstrating:
 
-* Real-world React architecture
-* Advanced state management
-* API-driven UI
-* Strategic data processing
-* Polished UX/UI decisions
+- Real-world React architecture
+- Advanced state management
+- API-driven UI
+- Strategic data processing
+- Polished UX/UI decisions
 
 ---
 
