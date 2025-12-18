@@ -3,7 +3,6 @@ import { Card, Badge, ProgressBar, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useTeam } from '../../features/team/TeamContext';
-import { calculateTeamWeaknesses } from '../../features/team/teamUtils';
 import TypeBadge from '../../features/pokemon/components/TypeBadge';
 import Loader from '../../shared/components/Loader';
 
@@ -15,6 +14,20 @@ import styles from './styles.module.css';
  * - Cache em memória para evitar requisições repetidas
  * - Usa os dados enriquecidos (types, stats, sprites) para a UI e análise
  */
+function classifyRole(stats) {
+  const map = {};
+  stats.forEach(s => {
+    map[s.stat.name] = s.base_stat;
+  });
+
+  if (map.hp + map.defense + map['special-defense'] >= 260) return 'Defensivo';
+
+  if (map.attack >= 110) return 'Atacante Físico';
+  if (map['special-attack'] >= 110) return 'Atacante Especial';
+  if (map.speed >= 110) return 'Speedster';
+
+  return 'Balanceado';
+}
 
 export default function TeamBuilder() {
   const { team, removePokemon } = useTeam();
@@ -119,11 +132,20 @@ export default function TeamBuilder() {
     };
   }, [team]);
 
-  // Fraquezas baseadas no enrichedTeam
-  const weaknesses = useMemo(
-    () => calculateTeamWeaknesses(enrichedTeam || []),
-    [enrichedTeam]
-  );
+  const roleDistribution = useMemo(() => {
+    if (!enrichedTeam || enrichedTeam.length === 0) return [];
+
+    const roles = {};
+
+    enrichedTeam.forEach(p => {
+      if (!p.stats) return;
+
+      const role = classifyRole(p.stats);
+      roles[role] = (roles[role] || 0) + 1;
+    });
+
+    return Object.entries(roles);
+  }, [enrichedTeam]);
 
   // Estatísticas médias baseadas no enrichedTeam
   const avgStats = useMemo(() => {
@@ -243,27 +265,27 @@ export default function TeamBuilder() {
         )}
       </section>
 
-      {/* ANÁLISE */}
       {enrichedTeam && enrichedTeam.length > 0 && (
         <section className={styles.section}>
           <h2>Análise do Time</h2>
 
           <div className={styles.analysisGrid}>
-            {/* FRAQUEZAS */}
             <Card>
               <Card.Body className={styles.cardBody}>
-                <h5>Fraquezas Defensivas</h5>
+                <h5>Distribuição de Papéis</h5>
 
-                {weaknesses.length === 0 ? (
-                  <p className={styles.good}>Boa cobertura defensiva</p>
-                ) : (
-                  <div className={styles.badgeWrap}>
-                    {weaknesses.map(([type, count]) => (
-                      <Badge key={type} bg="danger" className={styles.badge}>
-                        {type} ×{count}
-                      </Badge>
-                    ))}
-                  </div>
+                <div className={styles.badgeWrap}>
+                  {roleDistribution.map(([role, count]) => (
+                    <Badge key={role} bg="secondary" className={styles.badge}>
+                      {role} ×{count}
+                    </Badge>
+                  ))}
+                </div>
+
+                {roleDistribution.length === 0 && (
+                  <p className={styles.emptySmall}>
+                    Não foi possível identificar os papéis do time
+                  </p>
                 )}
               </Card.Body>
             </Card>
