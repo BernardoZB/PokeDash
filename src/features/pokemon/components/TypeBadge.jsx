@@ -18,15 +18,18 @@ const TYPE_ICONS = {
   dark: '🌑',
   steel: '⚙️',
   fairy: '✨',
+  normal: '🔘',
 };
 
 export default function TypeBadge({ type }) {
   const label = type.charAt(0).toUpperCase() + type.slice(1);
 
   return (
-    <span className={`${styles.badge} ${styles[type]}`}>
-      <span className={styles.icon}>{TYPE_ICONS[type]}</span>
-      {label}
-    </span>
+    <div>
+      <span className={`${styles.badge} ${styles[type]}`}>
+        <span className={styles.icon}>{TYPE_ICONS[type]}</span>
+        {label}
+      </span>
+    </div>
   );
 }

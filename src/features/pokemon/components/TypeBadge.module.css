@@ -87,3 +87,6 @@
 .fairy {
   background: linear-gradient(135deg, #f9a8d4, #f472b6);
 }
+.normal {
+  background: linear-gradient(135deg, #a7a7a7, #525252);
+}
