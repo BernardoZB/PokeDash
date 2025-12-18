@@ -73,6 +73,39 @@
 .item:hover {
   background: rgba(0, 0, 0, 0.05);
 }
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #e5e7eb;
+}
+
+/* Botão de fechar */
+.close {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.close:hover {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.12);
+}
+
+.close:focus-visible {
+  outline: 2px solid #f87171;
+  outline-offset: 2px;
+}
 
 .info {
   flex: 1;

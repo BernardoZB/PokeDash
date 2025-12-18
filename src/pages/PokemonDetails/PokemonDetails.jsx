@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { Card, Badge, ProgressBar } from 'react-bootstrap';
 import { usePokemonId } from '../../features/pokemon/hooks/usePokemon';
 import TypeBadge from '../../features/pokemon/components/TypeBadge';
@@ -12,7 +12,11 @@ import { useTeam } from '../../features/team/TeamContext';
 
 export default function PokemonDetails() {
   const { id } = useParams();
+  const pokemonId = Number(id);
+  const invalidId = pokemonId > 151 || pokemonId < 1 || Number.isNaN(pokemonId);
+
   const { data, isLoading, error } = usePokemonId(id);
+
   const {
     data: dataNext,
     isLoading: isLoadingNext,
@@ -29,6 +33,7 @@ export default function PokemonDetails() {
     strengths,
     loading: loadingMatchups,
   } = usePokemonMatchups(data?.types || []);
+
   const { team, addPokemon, removePokemon } = useTeam();
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
@@ -40,6 +45,12 @@ export default function PokemonDetails() {
   const teamFull = team.length >= 6;
 
   const cryUrl = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`;
+  if (invalidId) {
+    return <Navigate to="/" replace />;
+  }
+
+  if (isLoading || isLoadingNext || isLoadingPrev) return <Loader />;
+  if (error) return <p>Erro ao carregar Pokémon</p>;
 
   const toggleCry = () => {
     if (!audioRef.current) return;
@@ -113,15 +124,17 @@ export default function PokemonDetails() {
           #{id}
         </Badge>
 
-        <Link to={`/pokemon/${dataNext.id}`} className={styles.navItem}>
-          <div className={styles.alignRight}>
-            <small>Próximo </small>
-            <strong className="pokeName">
-              {dataNext.name.charAt(0).toUpperCase() + dataNext.name.slice(1)}
-            </strong>
-          </div>
-          <span className={styles.arrow}>➡</span>
-        </Link>
+        {id < 151 && (
+          <Link to={`/pokemon/${dataNext.id}`} className={styles.navItem}>
+            <div className={styles.alignRight}>
+              <small>Próximo </small>
+              <strong className="pokeName">
+                {dataNext.name.charAt(0).toUpperCase() + dataNext.name.slice(1)}
+              </strong>
+            </div>
+            <span className={styles.arrow}>➡</span>
+          </Link>
+        )}
       </nav>
 
       <Card className={styles.headerCard}>
@@ -153,7 +166,7 @@ export default function PokemonDetails() {
             {/* AÇÕES */}
             <div className={styles.actions}>
               {/* CRY */}
-              <Button variant="outline-secondary" size="sm" onClick={toggleCry}>
+              <Button variant="primary" size="sm" onClick={toggleCry}>
                 {playing ? '🔊 Pausar choro' : '🔈 Ouvir choro'}
               </Button>
               <audio

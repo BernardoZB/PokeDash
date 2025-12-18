@@ -1,10 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Card, Button, Badge } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 import { useTeam } from '../../features/team/TeamContext';
-import { calculateTeamWeaknesses } from '../../features/team/teamUtils';
 import styles from './TeamWidget.module.css';
 import TypeBadge from '../../features/pokemon/components/TypeBadge';
 import { usePokemonTypes } from '../../features/pokemon/hooks/usePokemonTypes';
@@ -48,8 +47,6 @@ export default function TeamWidget() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  const weaknesses = useMemo(() => calculateTeamWeaknesses(team), [team]);
-
   return (
     <div className={styles.wrapper}>
       <AnimatePresence>
@@ -62,7 +59,17 @@ export default function TeamWidget() {
           >
             <Card className={styles.card}>
               <Card.Body>
-                <Card.Title className={styles.title}>Seu Time</Card.Title>
+                <Card.Title className={styles.title}>
+                  <span>Seu Time</span>
+
+                  <button
+                    className={styles.close}
+                    onClick={() => setOpen(false)}
+                    aria-label="Fechar painel do time"
+                  >
+                    ✕
+                  </button>
+                </Card.Title>
 
                 {team.length === 0 ? (
                   <p className={styles.empty}>Nenhum Pokémon no time</p>
@@ -81,27 +88,12 @@ export default function TeamWidget() {
                       </ul>
                     </ul>
 
-                    {weaknesses.length > 0 && (
-                      <div className={styles.weaknesses}>
-                        <strong>Fraquezas do time</strong>
-
-                        <div className={styles.weaknessList}>
-                          {weaknesses.map(([type, count]) => (
-                            <Badge
-                              key={type}
-                              bg="danger"
-                              className={styles.weakness}
-                            >
-                              {type} ×{count}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
                     <Button
                       className={styles.goTeam}
-                      onClick={() => navigate('/team')}
+                      onClick={() => {
+                        navigate('/team');
+                        setOpen(false);
+                      }}
                     >
                       Ir para Team Builder
                     </Button>
