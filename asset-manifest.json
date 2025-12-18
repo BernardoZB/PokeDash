@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/PokeDash/static/css/main.08789a5c.css",
-    "main.js": "/PokeDash/static/js/main.293b988b.js",
+    "main.css": "/PokeDash/static/css/main.8d8ee5b1.css",
+    "main.js": "/PokeDash/static/js/main.27d5ab20.js",
     "index.html": "/PokeDash/index.html",
-    "main.08789a5c.css.map": "/PokeDash/static/css/main.08789a5c.css.map",
-    "main.293b988b.js.map": "/PokeDash/static/js/main.293b988b.js.map"
+    "main.8d8ee5b1.css.map": "/PokeDash/static/css/main.8d8ee5b1.css.map",
+    "main.27d5ab20.js.map": "/PokeDash/static/js/main.27d5ab20.js.map"
   },
   "entrypoints": [
-    "static/css/main.08789a5c.css",
-    "static/js/main.293b988b.js"
+    "static/css/main.8d8ee5b1.css",
+    "static/js/main.27d5ab20.js"
   ]
 }
