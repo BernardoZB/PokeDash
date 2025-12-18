@@ -6,6 +6,42 @@ import { Card, Button, Badge } from 'react-bootstrap';
 import { useTeam } from '../../features/team/TeamContext';
 import { calculateTeamWeaknesses } from '../../features/team/teamUtils';
 import styles from './TeamWidget.module.css';
+import TypeBadge from '../../features/pokemon/components/TypeBadge';
+import { usePokemonTypes } from '../../features/pokemon/hooks/usePokemonTypes';
+
+function TeamItem({ pokemon, onRemove, onNavigate }) {
+  const types = usePokemonTypes(pokemon.id);
+
+  return (
+    <li className={styles.item} onClick={() => onNavigate(pokemon.id)}>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+        alt={pokemon.name}
+      />
+
+      <div className={styles.info}>
+        <span className={styles.name}>{pokemon.name}</span>
+
+        <div className={styles.types}>
+          {types.map(type => (
+            <TypeBadge key={type} type={type} />
+          ))}
+        </div>
+      </div>
+
+      <Button
+        size="sm"
+        variant="outline-danger"
+        onClick={e => {
+          e.stopPropagation();
+          onRemove(pokemon.name);
+        }}
+      >
+        ✕
+      </Button>
+    </li>
+  );
+}
 
 export default function TeamWidget() {
   const { team, removePokemon } = useTeam();
@@ -16,17 +52,6 @@ export default function TeamWidget() {
 
   return (
     <div className={styles.wrapper}>
-      {/* FAB */}
-      <motion.button
-        className={styles.fab}
-        whileTap={{ scale: 0.95 }}
-        whileHover={{ scale: 1.05 }}
-        onClick={() => setOpen(!open)}
-      >
-        🧠
-        <span className={styles.counter}>{team.length}/6</span>
-      </motion.button>
-
       <AnimatePresence>
         {open && (
           <motion.div
@@ -44,24 +69,16 @@ export default function TeamWidget() {
                 ) : (
                   <>
                     <ul className={styles.list}>
-                      {team.map(p => (
-                        <li key={p.name} className={styles.item}>
-                          <img
-                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`}
-                            alt={p.name}
+                      <ul className={styles.list}>
+                        {team.map(p => (
+                          <TeamItem
+                            key={p.name}
+                            pokemon={p}
+                            onRemove={removePokemon}
+                            onNavigate={id => navigate(`/pokemon/${id}`)}
                           />
-
-                          <span className={styles.name}>{p.name}</span>
-
-                          <Button
-                            size="sm"
-                            variant="outline-danger"
-                            onClick={() => removePokemon(p.name)}
-                          >
-                            ✕
-                          </Button>
-                        </li>
-                      ))}
+                        ))}
+                      </ul>
                     </ul>
 
                     {weaknesses.length > 0 && (
@@ -95,6 +112,16 @@ export default function TeamWidget() {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* FAB */}
+      <motion.button
+        className={styles.fab}
+        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.05 }}
+        onClick={() => setOpen(!open)}
+      >
+        🧠
+        <span className={styles.counter}>{team.length}/6</span>
+      </motion.button>
     </div>
   );
 }

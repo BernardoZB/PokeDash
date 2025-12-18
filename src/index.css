@@ -14,3 +14,8 @@ code {
 .pokeName {
   text-transform: capitalize;
 }
+.modal-content {
+  background: linear-gradient(135deg, #020617, #111827) !important;
+  color: white !important;
+  border: 1px solid #5e5e5e;
+}

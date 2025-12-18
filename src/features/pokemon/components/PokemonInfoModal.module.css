@@ -1,0 +1,33 @@
+.title {
+  text-transform: capitalize;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.stats {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.stats li {
+  margin-bottom: 6px;
+}
+
+.neutral {
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
+
+.stats {
+  text-transform: capitalize;
+}

@@ -4,12 +4,14 @@ import { Card, Button, Badge } from 'react-bootstrap';
 import { useTeam } from '../../../features/team/TeamContext';
 import Toast from '../../../shared/components/Toast';
 import styles from './PokemonCard.module.css';
+import PokemonInfoModal from './PokemonInfoModal';
 
 const MAX_TEAM_SIZE = 6;
 
 export default function PokemonCard({ pokemon }) {
   const { addPokemon, removePokemon, team } = useTeam();
   const [toast, setToast] = useState({ open: false, message: '' });
+  const [showInfo, setShowInfo] = useState(false);
 
   const alreadyInTeam = team.some(p => p.name === pokemon.name);
   const teamIsFull = team.length >= MAX_TEAM_SIZE;
@@ -65,20 +67,40 @@ export default function PokemonCard({ pokemon }) {
           <Button
             size="sm"
             onClick={handleAction}
-            className={styles.button}
+            className={styles.halfButton}
             variant={
               alreadyInTeam ? 'danger' : teamIsFull ? 'secondary' : 'primary'
             }
             disabled={!alreadyInTeam && teamIsFull}
           >
             {alreadyInTeam
-              ? 'Remover do time'
+              ? 'Remover'
               : teamIsFull
                 ? 'Time cheio'
-                : 'Adicionar ao time'}
+                : 'Adicionar'}
+          </Button>
+
+          <Button
+            size="sm"
+            variant="outline-info"
+            className={styles.halfButton}
+            onClick={e => {
+              e.preventDefault();
+              e.stopPropagation();
+              setShowInfo(true);
+            }}
+          >
+            ℹ️ Info
           </Button>
         </Card.Footer>
       </Card>
+      {showInfo && (
+        <PokemonInfoModal
+          show={showInfo}
+          onHide={() => setShowInfo(false)}
+          pokemonId={pokemon.id}
+        />
+      )}
 
       <Toast open={toast.open} message={toast.message} />
     </>

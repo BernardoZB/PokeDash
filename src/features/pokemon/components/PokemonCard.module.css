@@ -42,13 +42,13 @@
   font-size: 0.75rem;
   opacity: 0.85;
 }
-
 .footer {
-  background: transparent;
-  border-top: none;
-  padding: 10px 12px 14px;
   display: flex;
-  justify-content: center;
+  gap: 6px;
+}
+
+.halfButton {
+  flex: 1;
 }
 
 .button {

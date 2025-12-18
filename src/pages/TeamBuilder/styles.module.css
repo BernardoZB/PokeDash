@@ -1,3 +1,189 @@
+/* ===== PAGE ===== */
 .container {
-  padding: 12px;
+  min-height: 100vh;
+  padding: 32px 16px;
+  background: radial-gradient(circle at top, #1f2937, #020617);
+  color: #e5e7eb;
+}
+
+/* ===== HEADER ===== */
+.header {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+}
+
+.header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #9ca3af;
+  max-width: 640px;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty {
+  background: #111827;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  color: #9ca3af;
+}
+
+/* ===== TEAM GRID ===== */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ===== POKEMON CARD ===== */
+.pokemonCard {
+  background: linear-gradient(135deg, #0f172a, #1f2937);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.pokemonCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== CARD HEADER ===== */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.cardHeader img {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+}
+
+.cardHeader h5 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.types {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* ===== STATS ===== */
+.stats {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.stats li {
+  margin-bottom: 10px;
+}
+
+.stats span {
+  display: block;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== REMOVE BUTTON ===== */
+.remove {
+  width: 100%;
+  border-radius: 999px;
+  margin-top: 8px;
+}
+
+/* ===== ANALYSIS GRID ===== */
+.analysisGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* ===== ANALYSIS CARDS ===== */
+.analysisGrid .card {
+  background: linear-gradient(135deg, #020617, #111827);
+  border: none;
+  border-radius: 16px;
+  color: #e5e7eb;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.analysisGrid h5 {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* ===== WEAKNESSES ===== */
+.badgeWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+}
+
+/* ===== POSITIVE FEEDBACK ===== */
+.good {
+  color: #4ade80;
+  font-weight: 600;
+}
+.floatingHome {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+
+  background-color: #ffffff;
+  color: #333;
+  text-decoration: none;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.floatingHome:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }

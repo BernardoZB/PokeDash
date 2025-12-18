@@ -32,6 +32,9 @@ export default function PokemonDetails() {
   const { team, addPokemon, removePokemon } = useTeam();
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+  const [isShiny, setIsShiny] = useState(false);
+  const shinyAudioRef = useRef(null);
 
   const isInTeam = team.some(p => p.id === data?.id);
   const teamFull = team.length >= 6;
@@ -48,6 +51,25 @@ export default function PokemonDetails() {
     }
 
     setPlaying(!playing);
+  };
+  const handleImageClick = () => {
+    if (isShiny) return; // evita repetir
+
+    setClickCount(prev => {
+      const next = prev + 1;
+
+      if (next === 3) {
+        // toca som de brilho
+        shinyAudioRef.current?.play();
+
+        // ativa shiny
+        setIsShiny(true);
+
+        return 0; // reseta contador
+      }
+
+      return next;
+    });
   };
 
   const handleTeamAction = () => {
@@ -69,6 +91,9 @@ export default function PokemonDetails() {
   return (
     <main className={styles.container}>
       {/* NAV TOPO */}
+      <Link to="/" className={styles.floatingHome}>
+        ⬅ Home
+      </Link>
       <nav className={styles.topNav}>
         {id > 1 ? (
           <Link to={`/pokemon/${dataPrev.id}`} className={styles.navItem}>
@@ -101,10 +126,20 @@ export default function PokemonDetails() {
 
       <Card className={styles.headerCard}>
         <Card.Body className={styles.header}>
-          <img
-            src={data.sprites.other['official-artwork'].front_default}
-            alt={data.name}
-          />
+          <div
+            className={`${styles.imageWrapper} ${isShiny ? styles.shinyBurst : ''}`}
+            onClick={handleImageClick}
+          >
+            <img
+              src={
+                isShiny
+                  ? data.sprites.other['official-artwork'].front_shiny
+                  : data.sprites.other['official-artwork'].front_default
+              }
+              alt={data.name}
+              className={styles.pokemonImage}
+            />
+          </div>
 
           <div className={styles.info}>
             <h1 className={styles.name}>{data.name}</h1>
@@ -121,7 +156,11 @@ export default function PokemonDetails() {
               <Button variant="outline-secondary" size="sm" onClick={toggleCry}>
                 {playing ? '🔊 Pausar choro' : '🔈 Ouvir choro'}
               </Button>
-
+              <audio
+                ref={shinyAudioRef}
+                src="/sounds/shiny.mp3"
+                preload="auto"
+              />
               <audio
                 ref={audioRef}
                 src={cryUrl}

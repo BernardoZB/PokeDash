@@ -64,6 +64,33 @@
   margin-bottom: 10px;
   text-transform: capitalize;
 }
+.floatingHome {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+
+  background-color: #ffffff;
+  color: #333;
+  text-decoration: none;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.floatingHome:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
 /* NAV TOPO */
 .topNav {
   display: grid;
@@ -148,4 +175,58 @@
   gap: 12px;
   margin: 12px 0;
   flex-wrap: wrap;
+}
+.pokemonImage {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pokemonImage:active {
+  transform: scale(0.95);
+}
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.pokemonImage {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+/* ESTRELAS */
+.shinyBurst::before,
+.shinyBurst::after {
+  content: '✨ ✨ ✨ ✨ ✨';
+  position: absolute;
+  inset: -40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  animation: burst 1s ease-out forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shinyBurst::after {
+  content: '⭐ ⭐ ⭐';
+  font-size: 18px;
+  animation-delay: 0.1s;
+}
+
+@keyframes burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6) rotate(20deg);
+  }
 }
