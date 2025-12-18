@@ -166,7 +166,7 @@ export default function PokemonDetails() {
             {/* AÇÕES */}
             <div className={styles.actions}>
               {/* CRY */}
-              <Button variant="primary" size="sm" onClick={toggleCry}>
+              <Button variant="secondary" size="sm" onClick={toggleCry}>
                 {playing ? '🔊 Pausar choro' : '🔈 Ouvir choro'}
               </Button>
               <audio
