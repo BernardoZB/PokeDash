@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pokelab/static/css/main.08789a5c.css",
+    "main.js": "/pokelab/static/js/main.08e004bc.js",
+    "index.html": "/pokelab/index.html",
+    "main.08789a5c.css.map": "/pokelab/static/css/main.08789a5c.css.map",
+    "main.08e004bc.js.map": "/pokelab/static/js/main.08e004bc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08789a5c.css",
+    "static/js/main.08e004bc.js"
+  ]
+}
