@@ -251,7 +251,7 @@ export default function TeamBuilder() {
           <div className={styles.analysisGrid}>
             {/* FRAQUEZAS */}
             <Card>
-              <Card.Body>
+              <Card.Body className={styles.cardBody}>
                 <h5>Fraquezas Defensivas</h5>
 
                 {weaknesses.length === 0 ? (
@@ -271,7 +271,7 @@ export default function TeamBuilder() {
             {/* STATS MÉDIOS */}
             {avgStats && (
               <Card>
-                <Card.Body>
+                <Card.Body className={styles.cardBody}>
                   <h5>Status Médios</h5>
 
                   <ul className={styles.stats}>

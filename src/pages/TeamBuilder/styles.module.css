@@ -187,3 +187,7 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
+.cardBody {
+  background: radial-gradient(circle at top, #1f2937, #020617);
+  color: white;
+}
